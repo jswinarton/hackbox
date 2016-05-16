@@ -1,0 +1,12 @@
+---
+- name: "Add Java PPA"
+  apt_repository: "repo=ppa:webupd8team/java"
+  become: "yes"
+
+- name: "Accept the Oracle Java license"
+  shell: "echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections"
+  become: "yes"
+
+- name: "Install Oracle Java"
+  apt: "pkg=oracle-java8-installer"
+  become: "yes"

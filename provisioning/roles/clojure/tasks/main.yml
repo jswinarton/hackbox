@@ -1,0 +1,10 @@
+# Note: This role is dependent on the Java role.
+
+- name: "Add Leiningen PPA"
+  apt_repository: "repo=ppa:mikegedelman/leiningen-git-stable"
+  become: "yes"
+
+- name: "Install Leiningen"
+  apt: "pkg=leiningen"
+  become: "yes"
+

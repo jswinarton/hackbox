@@ -1,0 +1,13 @@
+---
+- name: "Set system hostname"
+  hostname: "name={{ hostname }}"
+  become: "yes"
+
+- name: "Generate locales"
+  locale_gen: "name={{ item }} state=present"
+  with_items:
+    - "en_US"
+    - "en_US.UTF-8"
+    - "en_CA"
+    - "en_CA.UTF-8"
+  become: "yes"

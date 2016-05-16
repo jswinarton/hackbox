@@ -1,0 +1,4 @@
+---
+- name: "Install haskell"
+  apt: "pkg=haskell-platform state=present"
+  become: "yes"

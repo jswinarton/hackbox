@@ -1,0 +1,19 @@
+---
+- name: "Add ruby PPA"
+  apt_repository: "repo='ppa:brightbox/ruby-ng' update_cache=yes"
+  become: "yes"
+
+- name: "Install ruby and dependent libraries"
+  apt: "pkg={{ item }} state=latest update_cache=yes cache_valid_time=3600"
+  with_items:
+    - "ruby2.3"
+    - "ruby2.3-dev"
+    - "zlib1g-dev"  # required for nokogiri
+  become: "yes"
+
+- name: "Install ruby dev tools"
+  gem: "name={{ item }} state=latest user_install=no"
+  with_items:
+    - "bundler"
+    - "pry"
+  become: "yes"
