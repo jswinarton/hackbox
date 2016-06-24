@@ -10,6 +10,6 @@ At minimum, this repo creates an Ubuntu Trusty VM using VirtualBox, makes some m
 Clone this repo. In `site.yml`, enable any of the scaffolding roles you want. Then:
 
 ```
-ansible-galaxy install -r provisioning/requirements.yml
+ansible-galaxy install -r provisioning/requirements.yml  # run with -f to upgrade existing installs
 vagrant up
 ```
