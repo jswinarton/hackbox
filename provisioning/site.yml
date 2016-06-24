@@ -3,14 +3,14 @@
   remote_user: vagrant
   roles:
     - { role: "vagrant", hostname: "vagrant-ubuntu-trusty-64" }
-    - { role: "hackbox-user", username: "vagrant" }
+    - { role: "hackbox-user", username: "hackbox-user" }
 
-    # Standalone languages
     # - clojure
     # - elixir
+    # - erlang
     # - go
-    # - java
     # - haskell
+    # - java
     # - nodejs
     # - postgresql
     # - python
