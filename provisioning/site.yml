@@ -3,7 +3,7 @@
   remote_user: vagrant
   roles:
     - { role: "vagrant", hostname: "vagrant-ubuntu-trusty-64" }
-    - { role: "hackbox-user", username: "hackbox-user" }
+    - { role: "hackbox-user", username: "hackbox" }
 
     # - clojure
     # - elixir
