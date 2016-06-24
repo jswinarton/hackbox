@@ -7,7 +7,7 @@
     - "libpq-dev"
   become: "yes"
 
-- name: "Update pg_hba.conf"
-  lineinfile: "dest=/etc/postgresql/9.3/main/pg_hba.conf regexp='^local.*all.*postgres.*peer$' line='local all postgres trust' state=present backrefs=yes"
+- name: "Trust all incoming connections in pg_hba.conf"
+  replace: "dest=/etc/postgresql/9.3/main/pg_hba.conf regexp='(md5|peer)' replace='trust'"
   notify: "restart postgresql"
   become: "yes"
