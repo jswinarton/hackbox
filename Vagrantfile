@@ -24,6 +24,8 @@ Vagrant.configure(2) do |config|
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
 
+  config.ssh.forward_agent = true
+
   config.vm.provider "virtualbox" do |vb|
     vb.memory = 1024
     vb.cpus = 1
