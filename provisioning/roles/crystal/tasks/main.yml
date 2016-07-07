@@ -1,0 +1,13 @@
+---
+- name: Add crystal apt key
+  apt_key: keyserver=keys.gnupg.net id=09617FD37CC06B54
+  become: yes
+
+- name: Add crystal apt repository
+  apt_repository: repo='deb https://dist.crystal-lang.org/apt crystal main' state=present
+  become: yes
+
+- name: Install crystal
+  apt: name=crystal update_cache=yes
+  become: yes
+

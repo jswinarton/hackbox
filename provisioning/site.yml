@@ -2,10 +2,11 @@
 - hosts: all
   remote_user: vagrant
   roles:
-    - { role: "vagrant", hostname: "vagrant-ubuntu-trusty-64" }
-    - { role: "hackbox-user", username: "vagrant" }
+    - { role: vagrant, hostname: vagrant-ubuntu-trusty-64 }
+    - { role: hackbox-user, username: vagrant }
 
     # - clojure
+    # - crystal
     # - elixir
     # - erlang
     # - go
@@ -16,3 +17,4 @@
     # - postgresql
     # - python
     # - ruby
+    # - scala
