@@ -1,8 +1,16 @@
 ---
+- name: "Download Nodejs PPA install script"
+  get_url: "url=https://deb.nodesource.com/setup_6.x dest=/tmp/nodejs_setup"
+  when: edge == true
+
+- name: "Download Nodejs PPA install script"
+  get_url: "url=https://deb.nodesource.com/setup_4.x dest=/tmp/nodejs_setup"
+  when: edge == false
+
+- name: "Add nodejs PPA"
+  command: "/tmp/nodejs_setup"
+  become: "yes"
+
 - name: "Install nodejs and related tools"
-  apt: "pkg={{ item }} state=latest"
-  with_items:
-    - "nodejs"
-    - "npm"
-    - "nodejs-legacy"
+  apt: "pkg=nodejs state=latest"
   become: "yes"
