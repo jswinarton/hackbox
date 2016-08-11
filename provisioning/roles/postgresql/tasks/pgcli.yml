@@ -1,0 +1,7 @@
+---
+- name: Install python dev tools
+  pip: "name={{ item }}"
+  with_items:
+    - psycopg2
+    - pgcli
+  become: yes

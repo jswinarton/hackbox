@@ -1,0 +1,3 @@
+---
+dependencies:
+  - { role: python, when: include_pgcli == true }

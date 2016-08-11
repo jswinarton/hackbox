@@ -1,30 +1,26 @@
 ---
-- name: "Add python PPA"
-  apt_repository: "repo='ppa:fkrull/deadsnakes-python2.7' update_cache=yes"
-  become: "yes"
+- name: Add python PPA
+  apt_repository: repo=ppa:fkrull/deadsnakes-python2.7 update_cache=yes
+  become: yes
 
-- name: "Install python and related libraries"
-  apt: "pkg={{ item }} state=latest update_cache=yes cache_valid_time=3600"
+- name: Install python and related libraries
+  apt: "pkg={{ item }} state=latest update_cache=yes"
   with_items:
-    - "python-dev"
-    - "python-psycopg2"
-    - "libpq-dev"
-  become: "yes"
+    - python2.7
+    - python-dev
+  become: yes
 
-- name: "Install pip"
+- name: Install pip
   shell: "wget -O - https://bootstrap.pypa.io/get-pip.py | /usr/bin/python"
   args:
-    creates: "/usr/local/bin/pip"
-    warn: "no"
-  become: "yes"
+    creates: /usr/local/bin/pip
+    warn: no
+  become: yes
 
-- name: "Install python dev tools"
+- name: Install python dev tools
   pip: "name={{ item }}"
   with_items:
-    - "aws-shell"
-    - "fabric"
-    - "ipython"
-    - "pgcli"
-    - "virtualenv"
-    - "requests"
-  become: "yes"
+    - ipython
+    - virtualenv
+    - requests
+  become: yes
