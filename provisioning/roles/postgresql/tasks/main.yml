@@ -1,5 +1,5 @@
 ---
-- name: Install postgresql and related libraries
+- name: install postgresql and related libraries
   apt: "pkg={{ item }} state=present"
   with_items:
     - postgresql
@@ -7,8 +7,18 @@
     - libpq-dev
   become: yes
 
-- name: Trust all incoming connections in pg_hba.conf
-  replace: "dest=/etc/postgresql/9.3/main/pg_hba.conf regexp='(md5|peer)' replace='trust'"
+- name: set pg_hba.conf to allow all connections
+  copy:
+    src: pg_hba.conf
+    dest: /etc/postgresql/9.3/main/pg_hba.conf
+  notify: restart postgresql
+  become: yes
+
+- name: allow nonlocal connections in postgresql.conf
+  replace:
+    dest: /etc/postgresql/9.3/main/postgresql.conf
+    regexp: "^#listen_addresses = 'localhost'"
+    replace: "listen_addresses = '*'"
   notify: restart postgresql
   become: yes
 
