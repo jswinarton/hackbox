@@ -1,8 +1,24 @@
 ---
+- name: install apt key for pgdg
+  apt_key:
+    id: ACCC4CF8
+    url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+  become: yes
+
+- name: add postgresql official apt repository
+  apt_repository:
+    repo: "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main"
+  become: yes
+
+- name: update apt cache
+  apt: update_cache=yes
+  become: yes
+
 - name: install postgresql and related libraries
   apt: "pkg={{ item }} state=present"
   with_items:
-    - postgresql
+    - postgresql-server-dev-9.4
+    - postgresql-9.4
     - postgresql-contrib
     - libpq-dev
   become: yes
@@ -10,13 +26,13 @@
 - name: set pg_hba.conf to allow all connections
   copy:
     src: pg_hba.conf
-    dest: /etc/postgresql/9.3/main/pg_hba.conf
+    dest: /etc/postgresql/9.4/main/pg_hba.conf
   notify: restart postgresql
   become: yes
 
 - name: allow nonlocal connections in postgresql.conf
   replace:
-    dest: /etc/postgresql/9.3/main/postgresql.conf
+    dest: /etc/postgresql/9.4/main/postgresql.conf
     regexp: "^#listen_addresses = 'localhost'"
     replace: "listen_addresses = '*'"
   notify: restart postgresql

@@ -14,7 +14,7 @@
     # - java
     # - nodejs
     # - { role: "nodejs", edge: true }  # use node latest (v6) instead of LTS
-    # - postgresql
+    - postgresql
     # - python
     # - ruby
     # - scala
