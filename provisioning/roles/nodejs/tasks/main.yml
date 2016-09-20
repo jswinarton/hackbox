@@ -1,11 +1,13 @@
 ---
 - name: "Download Nodejs PPA install script"
-  get_url: "url=https://deb.nodesource.com/setup_6.x dest=/tmp/nodejs_setup"
+  get_url: "url=https://deb.nodesource.com/setup_6.x dest=/tmp/nodejs_setup mode=0744"
+  become: "yes"
   when: edge == true
 
 - name: "Download Nodejs PPA install script"
-  get_url: "url=https://deb.nodesource.com/setup_4.x dest=/tmp/nodejs_setup"
+  get_url: "url=https://deb.nodesource.com/setup_4.x dest=/tmp/nodejs_setup mode=0744"
   when: edge == false
+  become: "yes"
 
 - name: "Add nodejs PPA"
   command: "/tmp/nodejs_setup"
