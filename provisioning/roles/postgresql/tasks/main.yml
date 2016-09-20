@@ -19,8 +19,6 @@
   with_items:
     - postgresql-server-dev-9.4
     - postgresql-9.4
-    - postgresql-contrib
-    - libpq-dev
   become: yes
 
 - name: set pg_hba.conf to allow all connections
