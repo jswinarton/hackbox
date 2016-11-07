@@ -1,4 +1,4 @@
-# vagrant-skeleton
+# pandora
 
 A skeleton for building a generic, hackable Ubuntu 14.04 x64 VM using Vagrant. Requires VirtualBox and Ansible.
 
