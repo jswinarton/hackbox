@@ -1,18 +1,24 @@
 ---
-- name: "Download Nodejs PPA install script"
-  get_url: "url=https://deb.nodesource.com/setup_6.x dest=/tmp/nodejs_setup mode=0744"
-  become: "yes"
-  when: edge == true
+- name: add nodesource key
+  apt_key:
+    data: "{{ lookup('file', 'nodesource.gpg.key') }}"
+    state: present
+  become: yes
 
-- name: "Download Nodejs PPA install script"
-  get_url: "url=https://deb.nodesource.com/setup_4.x dest=/tmp/nodejs_setup mode=0744"
-  when: edge == false
-  become: "yes"
+- name: add nodesource packages to apt
+  apt_repository:
+    repo: "{{ item }} https://deb.nodesource.com/node_6.x trusty main"
+    filename: nodesource
+    state: present
+  with_items:
+    - deb
+    - deb-src
+  become: yes
 
-- name: "Add nodejs PPA"
-  command: "/tmp/nodejs_setup"
-  become: "yes"
+- name: install nodejs
+  apt: pkg=nodejs state=latest
+  become: yes
 
-- name: "Install nodejs and related tools"
-  apt: "pkg=nodejs state=latest"
-  become: "yes"
+- name: install yarn
+  npm: name=yarn global=yes
+  become: yes
