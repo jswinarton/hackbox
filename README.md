@@ -1,8 +1,8 @@
 # pandora
 
-A skeleton for building a generic, hackable Ubuntu 14.04 x64 VM using Vagrant. Requires VirtualBox and Ansible.
+A skeleton for building a generic, hackable Ubuntu 16.04 x64 VM using Vagrant. Requires VirtualBox and Ansible.
 
-At minimum, this repo creates an Ubuntu Trusty VM using VirtualBox, makes some minor system modifications ([see the vagrant role](./provisiong/roles/vagrant)), and installs [hackbox-user](https://github.com/jswinarton/hackbox-user). This repo also contains a handful of roles for installing commonly used languages and utilities, such as Python, Ruby, Java, Erlang, Elixir, PostgreSQL, and more.
+At minimum, this repo creates an Ubuntu Xenial VM using VirtualBox, makes some minor system modifications ([see the vagrant role](./provisiong/roles/vagrant)), and installs [hackbox-user](https://github.com/jswinarton/hackbox-user). This repo also contains a handful of roles for installing commonly used languages and utilities, such as Python, Ruby, Java, Erlang, Elixir, PostgreSQL, and more.
 
 
 ## Installation

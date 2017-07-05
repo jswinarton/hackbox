@@ -1,9 +1,11 @@
 ---
 - hosts: all
   remote_user: vagrant
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
   roles:
-    - { role: vagrant, hostname: vagrant-ubuntu-trusty-64 }
-    - { role: hackbox-user, username: vagrant }
+    - { role: vagrant, hostname: pandora }
+    - { role: hackbox-user, username: ubuntu }
 
     # - clojure
     # - crystal
